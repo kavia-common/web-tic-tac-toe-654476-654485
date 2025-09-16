@@ -1,0 +1,37 @@
+.square {
+  width: 80px;
+  height: 80px;
+  background-color: var(--bg-secondary);
+  border: none;
+  border-radius: 8px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square:hover:not(.filled) {
+  background-color: var(--button-bg);
+  opacity: 0.7;
+}
+
+.square.winning {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.square.filled {
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .square {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+}

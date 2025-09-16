@@ -1,0 +1,24 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: var(--border-color);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.board-row {
+  display: flex;
+  gap: 5px;
+}
+
+@media (max-width: 768px) {
+  .board {
+    gap: 3px;
+    padding: 3px;
+  }
+  
+  .board-row {
+    gap: 3px;
+  }
+}

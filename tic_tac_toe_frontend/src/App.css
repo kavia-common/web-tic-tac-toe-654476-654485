@@ -4,9 +4,9 @@
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
   --text-primary: #282c34;
-  --text-secondary: #61dafb;
+  --text-secondary: #666666;
   --border-color: #e9ecef;
-  --button-bg: #007bff;
+  --button-bg: #4a90e2;
   --button-text: #ffffff;
 }
 
@@ -15,10 +15,10 @@
   --bg-primary: #1a1a1a;
   --bg-secondary: #282c34;
   --text-primary: #ffffff;
-  --text-secondary: #61dafb;
+  --text-secondary: #b3b3b3;
   --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+  --button-bg: #61dafb;
+  --button-text: #282c34;
 }
 
 .App {
