@@ -1,30 +1,45 @@
 /* CSS Variables for Theme Management */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
+  /* Light theme colors - using a more sophisticated color palette */
+  --bg-primary: #f7f9fc;
+  --bg-secondary: #ffffff;
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --accent-color: #4299e1;
+  --border-color: #e2e8f0;
+  --button-bg: #4299e1;
+  --button-hover: #3182ce;
   --button-text: #ffffff;
   --board-bg: #ffffff;
-  --cell-border: #dee2e6;
-  --hover-bg: #f8f9fa;
+  --cell-border: #e2e8f0;
+  --hover-bg: #ebf8ff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --winner-color: #48bb78;
 }
 
 [data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
+  /* Dark theme colors - using a rich, contrast-friendly palette */
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+  --accent-color: #63b3ed;
+  --border-color: #4a5568;
+  --button-bg: #4299e1;
+  --button-hover: #3182ce;
   --button-text: #ffffff;
-  --board-bg: #282c34;
-  --cell-border: #404040;
-  --hover-bg: #363c48;
+  --board-bg: #2d3748;
+  --cell-border: #4a5568;
+  --hover-bg: #2c5282;
+  --shadow-color: rgba(0, 0, 0, 0.25);
+  --winner-color: #48bb78;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .App {
@@ -32,110 +47,95 @@
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+  transition: all 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  padding: 2rem 1rem;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
-}
-
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
-}
-
-.theme-toggle:active {
-  transform: translateY(0);
-}
-
-/* Game Board Styles */
+/* Game container layout */
 .game-container {
-  padding: 20px;
   max-width: 600px;
+  width: 100%;
   margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+/* Typography */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .status {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
+.status.winner {
+  color: var(--winner-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  animation: winner-announcement 0.5s ease-in-out;
+}
+
+/* Board layout */
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin: 20px 0;
+  gap: 12px;
+  margin: 2rem auto;
+  padding: 1rem;
   background: var(--board-bg);
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  max-width: 400px;
 }
 
+/* Square styling */
 .square {
-  background: var(--board-bg);
+  aspect-ratio: 1;
+  width: 100%;
+  background: var(--bg-secondary);
   border: 2px solid var(--cell-border);
-  border-radius: 8px;
-  font-size: 2.5rem;
-  font-weight: bold;
-  padding: 0;
-  text-align: center;
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
-  cursor: pointer;
+  border-radius: 12px;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 700;
   color: var(--text-primary);
-  transition: background-color 0.2s ease;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .square:hover {
   background: var(--hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-.game-button {
+.square:active {
+  transform: translateY(0);
+}
+
+/* Buttons */
+.game-button,
+.theme-toggle {
   background: var(--button-bg);
   color: var(--button-text);
   border: none;
@@ -145,44 +145,78 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  margin: 10px 0;
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
-.game-button:hover {
-  opacity: 0.9;
+.game-button:hover,
+.theme-toggle:hover {
+  background: var(--button-hover);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-.game-button:active {
+.game-button:active,
+.theme-toggle:active {
   transform: translateY(0);
 }
 
-.winner {
-  color: #28a745;
-  animation: winner-animation 0.5s ease-in-out;
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
 }
 
-@keyframes winner-animation {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+/* Animations */
+@keyframes winner-announcement {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 1; }
   100% { transform: scale(1); }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Responsive design */
+@media (max-width: 768px) {
+  .game-container {
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .status {
+    font-size: 1.1rem;
+  }
+
+  .theme-toggle {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    top: 10px;
+    right: 10px;
+  }
+
+  .board {
+    gap: 8px;
+    padding: 0.5rem;
   }
 }
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
+/* Accessibility focus styles */
+.square:focus,
+.game-button:focus,
+.theme-toggle:focus {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .square,
+  .game-button,
   .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+    border: 2px solid ButtonText;
   }
 }
