@@ -8,6 +8,9 @@
   --border-color: #e9ecef;
   --button-bg: #007bff;
   --button-text: #ffffff;
+  --board-bg: #ffffff;
+  --cell-border: #dee2e6;
+  --hover-bg: #f8f9fa;
 }
 
 [data-theme="dark"] {
@@ -19,6 +22,9 @@
   --border-color: #404040;
   --button-bg: #0056b3;
   --button-text: #ffffff;
+  --board-bg: #282c34;
+  --cell-border: #404040;
+  --hover-bg: #363c48;
 }
 
 .App {
@@ -82,6 +88,84 @@
 
 .theme-toggle:active {
   transform: translateY(0);
+}
+
+/* Game Board Styles */
+.game-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.status {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+  background: var(--board-bg);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.square {
+  background: var(--board-bg);
+  border: 2px solid var(--cell-border);
+  border-radius: 8px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 0;
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background-color 0.2s ease;
+}
+
+.square:hover {
+  background: var(--hover-bg);
+}
+
+.game-button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 10px 0;
+}
+
+.game-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.game-button:active {
+  transform: translateY(0);
+}
+
+.winner {
+  color: #28a745;
+  animation: winner-animation 0.5s ease-in-out;
+}
+
+@keyframes winner-animation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 @keyframes App-logo-spin {
